@@ -77,6 +77,21 @@ kr_pipe_path = {
   west = empty_sprite,
 }
 
+--item
+data:extend({
+  {
+    type = "item",
+    name = "kr-advanced-chemical-plant",
+    icon = graphics_path .. "icons/advanced-chemical-plant.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    subgroup = "production-machine",
+    order = "e[chemical-plant]-b[advanced-chemical-plant]",
+    place_result = "kr-advanced-chemical-plant",
+    stack_size = 50,
+  }
+})
+
 -- entity
 data:extend({
   {
@@ -206,7 +221,7 @@ data:extend({
     working_sound = {
       sound = { filename = "__advanced-chemical-plant__/sounds/advanced-chemical-plant.ogg" },
       idle_sound = { filename = "__base__/sound/idle1.ogg" },
-      apparent_volume = 1.1,
+      apparent_volume = 1,
     },
     crafting_speed = 8,
     energy_source = {
@@ -235,9 +250,8 @@ data:extend({
     allowed_effects = { "consumption", "speed", "productivity", "pollution" },
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
-  },
+  }
 })
-
 
 -- recipe
 data:extend({
@@ -250,7 +264,7 @@ data:extend({
 		{
 			{"chemical-plant", 4},
 			{"speed-module", 4},
-			{"efficiency-module", 4},
+			{"effectivity-module", 4},
 		},
     result = "kr-advanced-chemical-plant",
 	}
@@ -262,7 +276,7 @@ data:extend({
     type = "technology",
     name = "kr-advanced-chemical-plant",
     mod = "Krastorio2",
-    icon = graphics_path .. "techology/advanced-chemical-plant.png",
+    icon = graphics_path .. "technology/advanced-chemical-plant.png",
     icon_size = 256,
     icon_mipmaps = 4,
     effects = {
@@ -274,20 +288,18 @@ data:extend({
     prerequisites =
 		{
 			"speed-module",
-			"logistics-2",
-			"advanced-electronics",
-			"automation-3",
-      "advanced-oil-processing"
+      "effectivity-module",
+      "coal-liquefaction"
 		},
     unit = {
-      count = 1000,
+      count = 300,
       ingredients = {
         {"utility-science-pack", 1},
         {"automation-science-pack", 1},
 				{"logistic-science-pack", 1},
 				{"chemical-science-pack", 1}
       },
-      time = 60,
+      time = 45,
     },
-  },
+  }
 })
