@@ -77,24 +77,27 @@ kr_pipe_path = {
   west = empty_sprite,
 }
 
---item
-data:extend({
-  {
-    type = "item",
-    name = "kr-advanced-chemical-plant",
-    icon = graphics_path .. "icons/advanced-chemical-plant.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
-    subgroup = "production-machine",
-    order = "e[chemical-plant]-b[advanced-chemical-plant]",
-    place_result = "kr-advanced-chemical-plant",
-    stack_size = 50,
-  }
-})
+-- item
+local chemical_plant_item = {
+  type = "item",
+  name = "kr-advanced-chemical-plant",
+  icon = graphics_path .. "icons/advanced-chemical-plant.png",
+  icon_size = 64,
+  icon_mipmaps = 4,
+  subgroup = "production-machine",
+  order = "e[chemical-plant]-b[advanced-chemical-plant]",
+  place_result = "kr-advanced-chemical-plant",
+  stack_size = 50,
+}
 
+-- if `chemistry` subgroup exists then use that, otherwise use the same as the default chemical plant
 if data.raw["item-subgroup"]["chemistry"] then
-  data.raw.item["kr-advanced-chemical-plant"].subgroup = "chemistry"
+  chemical_plant_item.subgroup = "chemistry"
+else
+  chemical_plant_item.subgroup = "production-machine"
 end
+
+data:extend({ chemical_plant_item })
 
 -- entity
 data:extend({
