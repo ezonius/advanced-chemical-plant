@@ -85,12 +85,16 @@ data:extend({
     icon = graphics_path .. "icons/advanced-chemical-plant.png",
     icon_size = 64,
     icon_mipmaps = 4,
-    subgroup = "chemistry",
+    subgroup = "production-machine",
     order = "e[chemical-plant]-b[advanced-chemical-plant]",
     place_result = "kr-advanced-chemical-plant",
     stack_size = 50,
   }
 })
+
+if data.raw["item-subgroup"]["chemistry"] then
+  data.raw.item["kr-advanced-chemical-plant"].subgroup = "chemistry"
+end
 
 -- entity
 data:extend({
@@ -303,4 +307,3 @@ data:extend({
     },
   }
 })
-
