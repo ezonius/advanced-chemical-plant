@@ -85,7 +85,7 @@ data:extend({
     icon = graphics_path .. "icons/advanced-chemical-plant.png",
     icon_size = 64,
     icon_mipmaps = 4,
-    subgroup = "production-machine",
+    subgroup = "chemistry",
     order = "e[chemical-plant]-b[advanced-chemical-plant]",
     place_result = "kr-advanced-chemical-plant",
     stack_size = 50,
@@ -108,8 +108,8 @@ data:extend({
     damaged_trigger_effect = hit_effects.entity(),
     resistances = {
       { type = "physical", percent = 50 },
-      { type = "fire", percent = 70 },
-      { type = "impact", percent = 70 },
+      { type = "fire",     percent = 70 },
+      { type = "impact",   percent = 70 },
     },
     fluid_boxes = {
       {
@@ -255,19 +255,19 @@ data:extend({
 
 -- recipe
 data:extend({
-	{
-		type = "recipe",
-		name = "kr-advanced-chemical-plant",
+  {
+    type = "recipe",
+    name = "kr-advanced-chemical-plant",
     energy_required = 30,
-		enabled = "false",
-		ingredients =
-		{
-			{"chemical-plant", 4},
-			{"speed-module", 4},
-			{"effectivity-module", 4},
-		},
+    enabled = "false",
+    ingredients =
+    {
+      { "chemical-plant",     4 },
+      { "speed-module",       4 },
+      { "effectivity-module", 4 },
+    },
     result = "kr-advanced-chemical-plant",
-	}
+  }
 })
 
 -- technology
@@ -286,20 +286,21 @@ data:extend({
       },
     },
     prerequisites =
-		{
-			"speed-module",
+    {
+      "speed-module",
       "effectivity-module",
       "coal-liquefaction"
-		},
+    },
     unit = {
       count = 300,
       ingredients = {
-        {"utility-science-pack", 1},
-        {"automation-science-pack", 1},
-				{"logistic-science-pack", 1},
-				{"chemical-science-pack", 1}
+        { "utility-science-pack",    1 },
+        { "automation-science-pack", 1 },
+        { "logistic-science-pack",   1 },
+        { "chemical-science-pack",   1 }
       },
       time = 45,
     },
   }
 })
+
