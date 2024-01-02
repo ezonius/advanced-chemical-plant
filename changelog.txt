@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.2
+Date: 2024.01.02
+  Bugfixes:
+    - Fix zh-CN locale.
+---------------------------------------------------------------------------------------------------
 Version: 1.3.1
 Date: 2023.06.04
   Features:
@@ -7,12 +12,12 @@ Date: 2023.06.04
 Version: 1.3.0
 Date: 2023.06.03
   Bugfixes:
-    - Handled missing chemistry subgroup
+    - Handled missing chemistry subgroup.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 2023.06.03
   Bugfixes:
-    - Changed subgroup from `production-machine` to `chemistry`
+    - Changed subgroup from `production-machine` to `chemistry`.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
 Date: 2023.05.30
