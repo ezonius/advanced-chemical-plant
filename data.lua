@@ -15,7 +15,6 @@ data:extend({
     type = "corpse",
     name = "kr-big-random-pipes-remnant",
     icon = graphics_path .. "remnant/remnants-icon.png",
-    icon_size = 64,
     flags = { "placeable-neutral", "building-direction-8-way", "not-on-map" },
     selection_box = { { -4, -4 }, { 4, 4 } },
     tile_width = 3,
@@ -27,21 +26,13 @@ data:extend({
     final_render_layer = "remnants",
     remove_on_tile_placement = false,
     animation = make_rotated_animation_variations_from_sheet(1, {
-      filename = graphics_path .. "remnant/big-random-pipes-remnant.png",
+      filename = graphics_path .. "remnant/hr-big-random-pipes-remnant.png",
       line_length = 1,
-      width = 250,
-      height = 250,
+      width = 500,
+      height = 500,
       frame_count = 1,
       direction_count = 1,
-      hr_version = {
-        filename = graphics_path .. "remnant/hr-big-random-pipes-remnant.png",
-        line_length = 1,
-        width = 500,
-        height = 500,
-        frame_count = 1,
-        direction_count = 1,
-        scale = 0.5,
-      },
+      scale = 0.5,
     }),
   },
 })
@@ -56,23 +47,16 @@ local empty_sprite = {
   shift = { 0, 0 },
 }
 
-kr_pipe_path = {
+local kr_pipe_path = {
   north = empty_sprite,
   east = empty_sprite,
   south = {
-    filename = graphics_path .. "pipe-patch/pipe-patch.png",
+    filename = graphics_path .. "pipe-patch/hr-pipe-patch.png",
     priority = "high",
-    width = 28,
-    height = 25,
+    width = 55,
+    height = 50,
+    scale = 0.5,
     shift = { 0.01, -0.58 },
-    hr_version = {
-      filename = graphics_path .. "pipe-patch/hr-pipe-patch.png",
-      priority = "high",
-      width = 55,
-      height = 50,
-      scale = 0.5,
-      shift = { 0.01, -0.58 },
-    },
   },
   west = empty_sprite,
 }
@@ -82,8 +66,6 @@ local chemical_plant_item = {
   type = "item",
   name = "kr-advanced-chemical-plant",
   icon = graphics_path .. "icons/advanced-chemical-plant.png",
-  icon_size = 64,
-  icon_mipmaps = 4,
   subgroup = "production-machine",
   order = "e[chemical-plant]-b[advanced-chemical-plant]",
   place_result = "kr-advanced-chemical-plant",
@@ -105,8 +87,6 @@ data:extend({
     type = "assembling-machine",
     name = "kr-advanced-chemical-plant",
     icon = graphics_path .. "icons/advanced-chemical-plant.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
     flags = { "placeable-neutral", "placeable-player", "player-creation" },
     minable = { mining_time = 1, result = "kr-advanced-chemical-plant" },
     max_health = 1500,
@@ -123,69 +103,73 @@ data:extend({
         production_type = "input",
         pipe_covers = pipecoverspictures(),
         pipe_picture = kr_pipe_path,
+        volume = 2000,
         base_area = 20,
         base_level = -1,
-        pipe_connections = { { type = "input", position = { 2, -4 } } },
+        pipe_connections = { { flow_direction = "input", direction = defines.direction.north, position = { 2, -3 } } },
       },
       {
         production_type = "input",
         pipe_covers = pipecoverspictures(),
         pipe_picture = kr_pipe_path,
-        base_area = 20,
-        base_level = -1,
-        pipe_connections = { { type = "input", position = { 0, -4 } } },
+        volume = 2000,
+        pipe_connections = { { flow_direction = "input", direction = defines.direction.north, position = { 0, -3 } } },
       },
       {
         production_type = "input",
         pipe_covers = pipecoverspictures(),
         pipe_picture = kr_pipe_path,
-        base_area = 20,
-        base_level = -1,
-        pipe_connections = { { type = "input", position = { -2, -4 } } },
+        volume = 2000,
+        pipe_connections = { { flow_direction = "input", direction = defines.direction.north, position = { -2, -3 } } },
       },
       {
         production_type = "output",
         pipe_covers = pipecoverspictures(),
         pipe_picture = kr_pipe_path,
-        base_area = 10,
-        base_level = 1,
-        pipe_connections = { { type = "output", position = { 2, 4 } } },
+        volume = 1000,
+        pipe_connections = { { flow_direction = "output", direction = defines.direction.south, position = { 2, 3 } } },
       },
       {
         production_type = "output",
         pipe_covers = pipecoverspictures(),
         pipe_picture = kr_pipe_path,
-        base_area = 10,
-        base_level = 1,
-        pipe_connections = { { type = "output", position = { 0, 4 } } },
+        volume = 1000,
+        pipe_connections = { { flow_direction = "output", direction = defines.direction.south, position = { 0, 3 } } },
       },
       {
         production_type = "output",
         pipe_covers = pipecoverspictures(),
         pipe_picture = kr_pipe_path,
-        base_area = 10,
-        base_level = 1,
-        pipe_connections = { { type = "output", position = { -2, 4 } } },
+        volume = 1000,
+        pipe_connections = { { flow_direction = "output", direction = defines.direction.south, position = { -2, 3 } } },
       },
-
-      off_when_no_fluid_recipe = false,
     },
     collision_box = { { -3.25, -3.25 }, { 3.25, 3.25 } },
     selection_box = { { -3.5, -3.5 }, { 3.5, 3.5 } },
     fast_replaceable_group = "assembling-machine",
-    animation = {
-      layers = {
-        {
-          filename = graphics_path .. "entity/advanced-chemical-plant.png",
-          priority = "high",
-          width = 226,
-          height = 268,
-          shift = { 0, -0.48 },
-          frame_count = 20,
-          line_length = 5,
-          animation_speed = 0.25,
-          scale = 1,
-          hr_version = {
+    crafting_categories = { "chemistry" },
+    crafting_speed = 8,
+    ingredient_count = 6,
+    module_slots = 4,
+    allowed_effects = { "consumption", "speed", "productivity", "pollution" },
+    energy_source = {
+      type = "electric",
+      usage_priority = "secondary-input",
+      emissions_per_minute = { pollution = 2 },
+    },
+    energy_usage = "2.97MW",
+    open_sound = sounds.machine_open,
+    close_sound = sounds.machine_close,
+    vehicle_impact_sound = sounds.generic_impact,
+    working_sound = {
+      sound = { filename = "__advanced-chemical-plant__/sounds/advanced-chemical-plant.ogg" },
+      idle_sound = { filename = "__base__/sound/idle1.ogg" },
+      apparent_volume = 1,
+    },
+    graphics_set = {
+      animation = {
+        layers = {
+          {
             filename = graphics_path .. "entity/hr-advanced-chemical-plant.png",
             priority = "high",
             width = 451,
@@ -196,19 +180,7 @@ data:extend({
             animation_speed = 0.25,
             scale = 0.5,
           },
-        },
-        {
-          filename = graphics_path .. "entity/advanced-chemical-plant-sh.png",
-          priority = "high",
-          width = 258,
-          height = 229,
-          shift = { 0.33, 0.32 },
-          frame_count = 1,
-          repeat_count = 20,
-          animation_speed = 0.25,
-          scale = 1,
-          draw_as_shadow = true,
-          hr_version = {
+          {
             filename = graphics_path .. "entity/hr-advanced-chemical-plant-sh.png",
             priority = "high",
             width = 516,
@@ -223,20 +195,6 @@ data:extend({
         },
       },
     },
-    crafting_categories = { "chemistry" },
-    vehicle_impact_sound = sounds.generic_impact,
-    working_sound = {
-      sound = { filename = "__advanced-chemical-plant__/sounds/advanced-chemical-plant.ogg" },
-      idle_sound = { filename = "__base__/sound/idle1.ogg" },
-      apparent_volume = 1,
-    },
-    crafting_speed = 8,
-    energy_source = {
-      type = "electric",
-      usage_priority = "secondary-input",
-      emissions_per_minute = 2,
-    },
-
     water_reflection = {
       pictures = {
         filename = graphics_path .. "entity/advanced-chemical-plant-reflection.png",
@@ -250,13 +208,8 @@ data:extend({
       rotate = false,
       orientation_to_variation = false,
     },
-
-    energy_usage = "2.97MW",
-    ingredient_count = 6,
-    module_specification = { module_slots = 4, module_info_icon_shift = { 0, 1.7 }, module_info_icon_scale = 1 },
-    allowed_effects = { "consumption", "speed", "productivity", "pollution" },
-    open_sound = sounds.machine_open,
-    close_sound = sounds.machine_close,
+    icon_draw_specification = { scale = 2, shift = { 0, -0.3 } },
+    icons_positioning = { { inventory_index = defines.inventory.assembling_machine_modules, shift = { 0, 1.25 } } },
   }
 })
 
@@ -266,14 +219,14 @@ data:extend({
     type = "recipe",
     name = "kr-advanced-chemical-plant",
     energy_required = 30,
-    enabled = "false",
+    enabled = false,
     ingredients =
     {
-      { "chemical-plant",     4 },
-      { "speed-module",       4 },
-      { "effectivity-module", 4 },
+      { type = "item", name = "chemical-plant",    amount = 4 },
+      { type = "item", name = "speed-module",      amount = 4 },
+      { type = "item", name = "efficiency-module", amount = 4 },
     },
-    result = "kr-advanced-chemical-plant",
+    results = { { type = "item", name = "kr-advanced-chemical-plant", amount = 1 } },
   }
 })
 
@@ -285,7 +238,6 @@ data:extend({
     mod = "Krastorio2",
     icon = graphics_path .. "technology/advanced-chemical-plant.png",
     icon_size = 256,
-    icon_mipmaps = 4,
     effects = {
       {
         type = "unlock-recipe",
@@ -295,7 +247,7 @@ data:extend({
     prerequisites =
     {
       "speed-module",
-      "effectivity-module",
+      "efficiency-module",
       "coal-liquefaction"
     },
     unit = {
