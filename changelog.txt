@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.2.0
+Date: 2024.11.08
+  Features:
+    - Added heating energy if using space age. This value may change in the future for balance.
+---------------------------------------------------------------------------------------------------
 Version: 2.1.0
 Date: 2024.11.08
   Features:
