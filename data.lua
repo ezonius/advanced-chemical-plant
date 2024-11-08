@@ -90,6 +90,15 @@ data:extend({
     flags = { "placeable-neutral", "placeable-player", "player-creation" },
     minable = { mining_time = 1, result = "kr-advanced-chemical-plant" },
     max_health = 1500,
+    circuit_wire_max_distance = assembling_machine_circuit_wire_max_distance,
+    circuit_connector = circuit_connector_definitions.create_vector(universal_connector_template,
+      {
+        { variation = 0, main_offset = util.by_pixel(96, -88),    shadow_offset = util.by_pixel(96, -88),    show_shadow = true },
+        { variation = 6, main_offset = util.by_pixel(50.5, 19.5), shadow_offset = util.by_pixel(77.5, 52.5), show_shadow = false },
+        { variation = 4, main_offset = util.by_pixel(-72, 8),     shadow_offset = util.by_pixel(-33, 52),    show_shadow = false },
+        { variation = 2, main_offset = util.by_pixel(-50.5, 12),  shadow_offset = util.by_pixel(-33.5, 42),  show_shadow = false }
+      }
+    ),
     corpse = "kr-big-random-pipes-remnant",
     dying_explosion = "big-explosion",
     damaged_trigger_effect = hit_effects.entity(),
