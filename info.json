@@ -5,7 +5,7 @@
   "author": "tshakah",
   "contact": "elisha@muckypupcreations.com",
   "homepage": "https://gitlab.com/tshakah/advanced-chemical-plant",
-  "factorio_version": "2.0",
+  "factorio_version": "2.1",
   "dependencies": [ "base >= 2.0", "? space-age", "? quality", "? space-exploration" ],
   "description": "Ports the advanced chemical plant from Krastorio to vanilla, with vanilla-esque balance"
 }
