@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 2.3.1
+Date: 2026.10.16
+  Bugfixes:
+    - Updated `factorio_version` to 2.1 and replaced the removed `defines.inventory.assembling_machine_modules` with `defines.inventory.crafter_modules`.
+---------------------------------------------------------------------------------------------------
 Version: 2.3.0
 Date: 2024.11.10
   Features:
