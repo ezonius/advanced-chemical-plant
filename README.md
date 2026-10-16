@@ -6,5 +6,3 @@ Ports the advanced chemical plant from Krastorio to vanilla, with vanilla-esque 
 - Quality module support
 - Circuit network connection
 - Heating energy when using Space Age
-
-This description is also referenced by `mod_info.yml` (`mod_info.description_file`) as the long description shown on the Factorio mod portal.
